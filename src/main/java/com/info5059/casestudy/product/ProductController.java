@@ -34,4 +34,10 @@ public class ProductController {
         return new ResponseEntity<Integer>(productRepository.deleteOne(id), HttpStatus.OK);
     }
 
+    @GetMapping("/api/products/{vendorid}")
+    public ResponseEntity<Iterable<Product>> findByVendor(@PathVariable Long vendorid) {
+        Iterable<Product> products = productRepository.findByVendorid(vendorid);
+        return new ResponseEntity<Iterable<Product>>(products, HttpStatus.OK);
+    }
+
 }

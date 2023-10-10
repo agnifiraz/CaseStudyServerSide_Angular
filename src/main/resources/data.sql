@@ -15,9 +15,13 @@ INSERT INTO Product (Id, VendorId,Name,CostPrice,MSRP,ROP,EOQ, QOH, QOO, QRcode,
 INSERT INTO Product (Id, VendorId,Name,CostPrice,MSRP,ROP,EOQ, QOH, QOO, QRcode,QRcodeTxt)
  VALUES ('438UFJF',4,'Samsung Galaxy S21',1299.00, 1600.27,8,15,16, 0,'' , '');
 INSERT INTO Product (Id, VendorId,Name,CostPrice,MSRP,ROP,EOQ, QOH, QOO, QRcode,QRcodeTxt)
- VALUES ('93UWHD',3,'Dell XPS 13',320.11, 500.66,5,13,15, 2,'' ,'' );
+ VALUES ('438XPJF',4,'Samsung Galaxy S23',1609.00, 1900.20,7,5,6, 1,'' , '');
+ INSERT INTO Product (Id, VendorId,Name,CostPrice,MSRP,ROP,EOQ, QOH, QOO, QRcode,QRcodeTxt)
+ VALUES ('4334FJF',4,'Iphone 15',1199.00, 1700.7,9,15,8, 3,'' , '');
 INSERT INTO Product (Id, VendorId,Name,CostPrice,MSRP,ROP,EOQ, QOH, QOO, QRcode,QRcodeTxt)
- VALUES ('DH4547FH',1,'Toyota Camry',400.30, 600.10,9,10,12, 4,'' , '');
+ VALUES ('12X45',3,'Dell XPS 13',320.11, 500.66,5,13,15, 2,'' ,'' );
+INSERT INTO Product (Id, VendorId,Name,CostPrice,MSRP,ROP,EOQ, QOH, QOO, QRcode,QRcodeTxt)
+ VALUES ('14X45',1,'Toyota Camry',400.30, 600.10,9,10,12, 4,'' , '');
 INSERT INTO Product (Id, VendorId,Name,CostPrice,MSRP,ROP,EOQ, QOH, QOO, QRcode,QRcodeTxt)
  VALUES ('403RUFG',2,'Sony PlayStation 5',200.30, 300.40,7,11,11, 3, '','' );
 
