@@ -86,7 +86,7 @@ public abstract class PurchaseOrderPDFGenerator extends AbstractPdfView {
                                         .setFont(font)
                                         .setFontSize(18)
                                         .setBold()
-                                        .setMarginRight(pg.getWidth() / 2 - 75).setMarginTop(-10)
+                                        .setMarginRight(pg.getWidth() / 2 - 60).setMarginTop(-10)
                                         .setTextAlignment(TextAlignment.RIGHT));
 
                         document.add(new Paragraph("\n\n"));
@@ -97,42 +97,43 @@ public abstract class PurchaseOrderPDFGenerator extends AbstractPdfView {
                         if (vendorOpt.isPresent()) {
                                 Vendor vendor = vendorOpt.get();
                                 Cell cell = new Cell().add(new Paragraph("Vendor:")
-                                                .setBold());
+                                                .setBold())
+                                                .setBorder(Border.NO_BORDER);
                                 vendorTable.addCell(cell);
 
                                 cell = new Cell(1, 2).add(new Paragraph(vendor.getName())
                                                 .setBold()
-                                                .setBorder(Border.NO_BORDER)
                                                 .setTextAlignment(TextAlignment.RIGHT)
-                                                .setBackgroundColor(ColorConstants.LIGHT_GRAY));
+                                                .setBackgroundColor(ColorConstants.LIGHT_GRAY))
+                                                .setBorder(Border.NO_BORDER);
                                 vendorTable.addCell(cell);
 
                                 cell = new Cell(1, 2).add(new Paragraph(vendor.getAddress1())
                                                 .setBold()
-                                                .setBorder(Border.NO_BORDER)
                                                 .setTextAlignment(TextAlignment.RIGHT)
-                                                .setBackgroundColor(ColorConstants.LIGHT_GRAY));
+                                                .setBackgroundColor(ColorConstants.LIGHT_GRAY))
+                                                .setBorder(Border.NO_BORDER);
                                 vendorTable.addCell(cell);
 
                                 cell = new Cell(1, 2).add(new Paragraph(vendor.getCity())
                                                 .setBold()
-                                                .setBorder(Border.NO_BORDER)
                                                 .setTextAlignment(TextAlignment.RIGHT)
-                                                .setBackgroundColor(ColorConstants.LIGHT_GRAY));
+                                                .setBackgroundColor(ColorConstants.LIGHT_GRAY))
+                                                .setBorder(Border.NO_BORDER);
                                 vendorTable.addCell(cell);
 
                                 cell = new Cell(1, 2).add(new Paragraph(vendor.getProvince())
                                                 .setBold()
-                                                .setBorder(Border.NO_BORDER)
                                                 .setTextAlignment(TextAlignment.RIGHT)
-                                                .setBackgroundColor(ColorConstants.LIGHT_GRAY));
+                                                .setBackgroundColor(ColorConstants.LIGHT_GRAY))
+                                                .setBorder(Border.NO_BORDER);
                                 vendorTable.addCell(cell);
 
                                 cell = new Cell(1, 2).add(new Paragraph(vendor.getEmail())
                                                 .setBold()
-                                                .setBorder(Border.NO_BORDER)
                                                 .setTextAlignment(TextAlignment.RIGHT)
-                                                .setBackgroundColor(ColorConstants.LIGHT_GRAY));
+                                                .setBackgroundColor(ColorConstants.LIGHT_GRAY))
+                                                .setBorder(Border.NO_BORDER);
                                 vendorTable.addCell(cell);
                         }
 
@@ -220,8 +221,8 @@ public abstract class PurchaseOrderPDFGenerator extends AbstractPdfView {
 
                         Cell cell = new Cell(1, 4).add(new Paragraph("Sub Total:")
                                         .setBorder(Border.NO_BORDER)
-                                        .setTextAlignment(TextAlignment.RIGHT)
-                                        .setBorder(Border.NO_BORDER));
+                                        .setTextAlignment(TextAlignment.RIGHT))
+                                        .setBorder(Border.NO_BORDER);
                         productTable.addCell(cell);
 
                         cell = new Cell().add(new Paragraph(formatter.format(subtotal))
@@ -230,8 +231,8 @@ public abstract class PurchaseOrderPDFGenerator extends AbstractPdfView {
 
                         cell = new Cell(1, 4).add(new Paragraph("Tax: ")
                                         .setBorder(Border.NO_BORDER)
-                                        .setTextAlignment(TextAlignment.RIGHT)
-                                        .setBorder(Border.NO_BORDER));
+                                        .setTextAlignment(TextAlignment.RIGHT))
+                                        .setBorder(Border.NO_BORDER);
                         productTable.addCell(cell);
 
                         cell = new Cell().add(new Paragraph(formatter.format(tax))
@@ -240,8 +241,8 @@ public abstract class PurchaseOrderPDFGenerator extends AbstractPdfView {
 
                         cell = new Cell(1, 4).add(new Paragraph("PO Total:")
                                         .setBorder(Border.NO_BORDER)
-                                        .setTextAlignment(TextAlignment.RIGHT)
-                                        .setBorder(Border.NO_BORDER));
+                                        .setTextAlignment(TextAlignment.RIGHT))
+                                        .setBorder(Border.NO_BORDER);
                         productTable.addCell(cell);
 
                         cell = new Cell().add(new Paragraph(formatter.format(total))
