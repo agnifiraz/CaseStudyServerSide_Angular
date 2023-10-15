@@ -5,7 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin
+//@CrossOrigin
 @RestController
 public class VendorController {
     @Autowired
@@ -24,14 +24,14 @@ public class VendorController {
     }
 
     @PostMapping("/api/vendors")
-        public ResponseEntity<Vendor> addOne(@RequestBody Vendor vendor) {
+    public ResponseEntity<Vendor> addOne(@RequestBody Vendor vendor) {
         Vendor newVendor = vendorRepository.save(vendor);
         return new ResponseEntity<Vendor>(newVendor, HttpStatus.OK);
     }
+
     @DeleteMapping("/api/vendors/{id}")
     public ResponseEntity<Integer> deleteOne(@PathVariable long id) {
         return new ResponseEntity<Integer>(vendorRepository.deleteOne(id), HttpStatus.OK);
     }
-
 
 }

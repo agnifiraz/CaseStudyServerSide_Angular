@@ -9,7 +9,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
-@CrossOrigin
+//@CrossOrigin
 @RepositoryRestResource(collectionResourceRel = "purchaseorders", path = "purchaseorders")
 public interface PurchaseOrderRepository extends CrudRepository<PurchaseOrder, Long> {
     // extend so we can return the number of rows deleted

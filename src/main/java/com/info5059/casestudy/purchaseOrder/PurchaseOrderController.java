@@ -5,7 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin
+//@CrossOrigin
 @RestController
 public class PurchaseOrderController {
     @Autowired
@@ -25,7 +25,7 @@ public class PurchaseOrderController {
         return new ResponseEntity<Iterable<PurchaseOrder>>(purchaseOrders, HttpStatus.OK);
     }
 
-    @GetMapping("/api/purchaseorders") //added
+    @GetMapping("/api/purchaseorders") // added
     public ResponseEntity<Iterable<PurchaseOrder>> findAll() {
         Iterable<PurchaseOrder> pos = purchaseOrderRepository.findAll();
         return new ResponseEntity<Iterable<PurchaseOrder>>(pos, HttpStatus.OK);
