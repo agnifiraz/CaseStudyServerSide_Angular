@@ -1,4 +1,5 @@
 package com.info5059.casestudy.product;
+
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import java.math.BigDecimal;
@@ -8,15 +9,16 @@ import jakarta.persistence.Id;
 //import jakarta.persistence.GeneratedValue;
 //import jakarta.persistence.GenerationType;
 import jakarta.persistence.Lob;
+
 /**
-* Product entity
-*/
+ * Product entity
+ */
 @Entity
 @Data
 @RequiredArgsConstructor
 public class Product {
     @Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    // @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
     private int vendorid;
     private String name;
@@ -26,8 +28,11 @@ public class Product {
     private int eoq;
     private int qoh;
     private int qoo;
-    private String qrcode;
-    private String qrcodetxt; 
+    @Basic(optional = true)
+    @Lob
+    private byte[] qrcode;
+    @Basic(optional = true)
+    private String qrcodetxt;
     // needed in 2nd case study
     @Basic(optional = true)
     @Lob

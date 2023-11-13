@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import java.io.ByteArrayInputStream;
 
-//@CrossOrigin
+@CrossOrigin
 @RestController
 public class Controller {
     @RequestMapping(value = "/ExamplePDF", method = RequestMethod.GET, produces = MediaType.APPLICATION_PDF_VALUE)
