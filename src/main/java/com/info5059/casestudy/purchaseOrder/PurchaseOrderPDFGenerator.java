@@ -175,6 +175,7 @@ public abstract class PurchaseOrderPDFGenerator extends AbstractPdfView {
                                         .setTextAlignment(TextAlignment.CENTER));
                         productTable.addCell(headerCell);
 
+                        LocalDateTime podate;
                         for (PurchaseOrderLineitem line : purchaseOrder.getItems()) {
                                 Optional<Product> optx = productRepository.findById(line.getProductid());
                                 if (optx.isPresent()) {
@@ -256,8 +257,11 @@ public abstract class PurchaseOrderPDFGenerator extends AbstractPdfView {
                         document.add(productTable);
 
                         document.add(new Paragraph("\n\n"));
-                        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd h:mm a");
-                        document.add(new Paragraph(dateFormatter.format(LocalDateTime.now()))
+
+                        podate = purchaseOrder.getPodate();
+
+                        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd h:mm:ss a");
+                        document.add(new Paragraph(dateFormatter.format(podate))
                                         .setTextAlignment(TextAlignment.CENTER));
                         document.close();
 
