@@ -4,6 +4,7 @@ import com.info5059.casestudy.vendor.Vendor;
 import com.info5059.casestudy.vendor.VendorRepository;
 import com.info5059.casestudy.product.Product;
 import com.info5059.casestudy.product.ProductRepository;
+import com.info5059.casestudy.product.QRCodeGenerator;
 import com.info5059.casestudy.pdfexample.Generator;
 import com.itextpdf.io.font.constants.StandardFonts;
 import com.itextpdf.kernel.font.PdfFontFactory;
@@ -175,7 +176,6 @@ public abstract class PurchaseOrderPDFGenerator extends AbstractPdfView {
                                         .setTextAlignment(TextAlignment.CENTER));
                         productTable.addCell(headerCell);
 
-                        LocalDateTime podate;
                         for (PurchaseOrderLineitem line : purchaseOrder.getItems()) {
                                 Optional<Product> optx = productRepository.findById(line.getProductid());
                                 if (optx.isPresent()) {
@@ -258,11 +258,17 @@ public abstract class PurchaseOrderPDFGenerator extends AbstractPdfView {
 
                         document.add(new Paragraph("\n\n"));
 
+                        LocalDateTime podate;
+
                         podate = purchaseOrder.getPodate();
 
                         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd h:mm:ss a");
                         document.add(new Paragraph(dateFormatter.format(podate))
                                         .setTextAlignment(TextAlignment.CENTER));
+
+                        Image qrcode = addSummaryQRCode(vendorOpt, purchaseOrder);
+                        document.add(qrcode);
+
                         document.close();
 
                 } catch (Exception ex) {
@@ -271,5 +277,24 @@ public abstract class PurchaseOrderPDFGenerator extends AbstractPdfView {
                 // finally send stream back to the controller
                 return new ByteArrayInputStream(baos.toByteArray());
 
+        }
+
+        private static Image addSummaryQRCode(Optional<Vendor> vendorOpt, PurchaseOrder po) {
+
+                Locale locale = Locale.of("en", "US");
+                NumberFormat formatter = NumberFormat.getCurrencyInstance(locale);
+                String summaryText = "Summary for Purchase Order:" + po.getId() + "\nDate:"
+                                + po.getPodate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd h:mm:ss a"))
+                                + "\nVendor:"
+                                + vendorOpt.map(Vendor::getName).orElse("") + "\nTotal:"
+                                + formatter.format(po.getAmount());
+
+                QRCodeGenerator qrCodeGenerator = new QRCodeGenerator();
+                byte[] qrcodebin = qrCodeGenerator.generateQRCode(summaryText);
+
+                Image qrcode = new Image(ImageDataFactory.create(qrcodebin)).scaleAbsolute(100, 100)
+                                .setFixedPosition(460, 60);
+
+                return qrcode;
         }
 }

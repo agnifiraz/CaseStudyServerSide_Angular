@@ -20,7 +20,7 @@ import jakarta.servlet.http.HttpServletRequest;
 
 import java.io.ByteArrayInputStream;
 
-@CrossOrigin
+//@CrossOrigin
 @RestController
 public class PurchaseOrderPDFController {
 

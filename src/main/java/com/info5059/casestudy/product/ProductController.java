@@ -8,7 +8,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import java.util.Objects;
 
-@CrossOrigin
+//@CrossOrigin
 @RestController
 public class ProductController {
     @Autowired
@@ -36,25 +36,6 @@ public class ProductController {
         Product newProduct = productRepository.save(product);
         return new ResponseEntity<Product>(newProduct, HttpStatus.OK);
     }
-
-    // @PostMapping("/api/products")
-    // public ResponseEntity<Product> addOne(@RequestBody Product product) {
-    // product.setQrcode(qrGenerator.generateQRCode(product.getQrcodetxt()));
-    // Product newProduct = productRepository.save(product);
-    // return new ResponseEntity<>(newProduct, HttpStatus.OK);
-    // }
-
-    // @PutMapping("/api/products")
-    // public ResponseEntity<Product> updateOne(@RequestBody Product product) {
-    // // Check if qrcodetxt is updated, then regenerate QR code
-    // if (!Objects.equals(product.getQrcodetxt(),
-    // productRepository.findById(product.getId()).orElse(null).getQrcodetxt())) {
-    // product.setQrcode(qrGenerator.generateQRCode(product.getQrcodetxt()));
-    // }
-
-    // Product updatedProduct = productRepository.save(product);
-    // return new ResponseEntity<>(updatedProduct, HttpStatus.OK);
-    // }
 
     @DeleteMapping("/api/products/{id}")
     public ResponseEntity<Integer> deleteOne(@PathVariable String id) {
